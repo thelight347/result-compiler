@@ -33,7 +33,7 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar px-0">
                 <div class="p-3 text-white">
-                    <h4 class="mb-0">Result Compiler</h4>
+                    <h4 class="mb-0">Trinity Care Interenational School</h4>
                     <small>{{ auth()->user()->role }}</small>
                 </div>
                 <nav class="nav flex-column px-3">
