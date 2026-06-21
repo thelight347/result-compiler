@@ -15,6 +15,11 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
+Route::get('/migrate', function () {
+    \Artisan::call('migrate --force');
+    return 'Migrations completed!';
+});
+
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
