@@ -15,9 +15,10 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
-Route::get('/migrate', function () {
+Route::get('/setup', function () {
     \Artisan::call('migrate --force');
-    return 'Migrations completed!';
+    \Artisan::call('db:seed --force');
+    return 'Database setup completed! Users and tables created.';
 });
 
     // Dashboard
