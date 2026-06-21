@@ -19,6 +19,28 @@ Route::get('/setup', function () {
     \Artisan::call('db:seed --force');
     return 'Database setup completed! Users and tables created.';
 });
+
+Route::get('/create-users', function () {
+    \App\Models\User::updateOrCreate(
+        ['email' => 'headmaster@school.com'],
+        [
+            'name' => 'Headmaster',
+            'email' => 'headmaster@school.com',
+            'password' => bcrypt('password123'),
+            'role' => 'headmaster',
+        ]
+    );
+    \App\Models\User::updateOrCreate(
+        ['email' => 'teacher@school.com'],
+        [
+            'name' => 'Teacher',
+            'email' => 'teacher@school.com',
+            'password' => bcrypt('password123'),
+            'role' => 'teacher',
+        ]
+    );
+    return 'Users created! You can now login.';
+});
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard
