@@ -14,12 +14,12 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth'])->group(function () {
 Route::get('/setup', function () {
     \Artisan::call('migrate --force');
     \Artisan::call('db:seed --force');
     return 'Database setup completed! Users and tables created.';
 });
+Route::middleware(['auth'])->group(function () {
 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
